@@ -1,0 +1,9 @@
+﻿global using GameZone.Data;
+global using Microsoft.EntityFrameworkCore;
+global using GameZone.Models;
+global using Microsoft.EntityFrameworkCore.Metadata.Builders;
+global using Microsoft.AspNetCore.Mvc;
+global using GameZone.ViewModels;
+global using GameZone.Services;
+global using GameZone.Settings;
+global using AutoMapper;

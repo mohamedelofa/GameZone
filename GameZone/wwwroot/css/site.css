@@ -1,0 +1,111 @@
+* {
+    font-family: "Quicksand", system-ui;
+    font-optical-sizing: auto;
+    font-weight: normal;
+    font-style: normal;
+}
+html {
+        font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+/*.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}*/
+
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+}
+
+
+/*Custom Styles*/
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem #ffa500, 0 0 0 0.25rem #df19192b;
+}
+.Cover-Show{
+    max-height:600px;
+}
+/*End*/
+
+/* Start override select2 */
+.select2-container--default .select2-selection--single {
+    background-color: #30115e;
+    border: none;
+    border-radius: 2px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+        height: 100%;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+        color: #4e5d6c;
+        line-height: 38px;
+}
+
+.select2-dropdown {
+    background-color: #0f2537;
+}
+
+.select2-dropdown.select2-dropdown--below {
+    background-color: #0f2537;
+}
+
+
+
+.select2-container--default.select2-results__option--highlighted[aria-selected] {
+    background-color: #7158fb;
+}
+
+.select2-container--default .select2-results__option[aria-selected=true] {
+    background-color: #7158fb;
+}
+
+.select2-container--default .select2-selection--single,
+.select2-container--default .select2-selection--multiple {
+    background-color: #ffffff;
+    border: none;
+    border-radius: 2px;
+}
+
+    .select2-container--default .select2-selection--multiple .select2-selection__choice {
+        background-color: #0f2537;
+        border: 1px solid #250d49;
+    }
+
+    .select2-container--default .select2-selection--multiple .select2-selection__choice__remove:hover {
+        color: #ffffff;
+    }
+
+.select2 {
+    width: 100% !important;
+}
+/* End override select2 */
+
+/*Start override Sweetalert*/
+
+.swal2-popup.swal2-modal.swal2-show{
+    background-color: #0f2537;
+}
+h2#swal2-title, div#swal2-html-container {
+    color: white;
+}
+.swal2-success-circular-line-left, .swal2-success-circular-line-right, .swal2-success-fix {
+    background-color: #0f2537 !important;
+}
+
+/*End override sweetalert*/

@@ -1,0 +1,64 @@
+﻿@model GameUpdateFormViewModel
+@{
+	ViewData["Title"] = Model.Name;
+	SelectList Categories = new SelectList(Model.Categories, "Id", "Name");
+	SelectList Devices = new SelectList(Model.Devices, "Id", "Name");
+}
+
+<h5>
+	Update Game
+	<i class="bi bi-controller"></i>
+</h5>
+
+<form method="post" asp-action="SaveUpdate" asp-controller="Games" asp-route-id="@Model.Id" enctype="multipart/form-data">
+	<div class="row">
+		<div class="col-md-6">
+			<div>
+				<label asp-for="Name" class="form-label mt-4"></label>
+				<input class="form-control" asp-for="Name">
+				<span asp-validation-for="Name" class="text-danger"></span>
+			</div>
+			<div>
+				<label asp-for="CategoryId" class="form-label mt-4"></label>
+				<select class="form-select" asp-for="CategoryId" asp-items="Categories"
+						data-placeholder="Select Category" data-minimum-results-for-search="Infinity">
+				</select>
+				<span asp-validation-for="CategoryId" class="text-danger"></span>
+			</div>
+			<div>
+				<label asp-for="SelectedDevices" class="form-label mt-4"></label>
+				<select class="form-select" asp-for="SelectedDevices" asp-items="Devices"
+						data-placeholder="Select Devices" data-minimum-results-for-search="Infinity">
+				</select>
+				<span asp-validation-for="SelectedDevices" class="text-danger"></span>
+			</div>
+			<div>
+				<label asp-for="Cover" class="form-label mt-4"></label>
+				<input type="file" asp-for="Cover" class="form-control"
+					   data-rule-extension="@FileSettings.AllowedExtensions.Replace(".",string.Empty)"
+					   data-msg-extension="Only @(string.Join("  ",FileSettings.AllowedExtensions.Split(','))) are allowed. "
+					   data-rule-MaxFileSize="@FileSettings.MaxFileSizeInBytes"
+					   data-msg-MaxFileSize="Maximum allowed size is @(FileSettings.MaxFileSizeInBytes / 1024 / 1024)MB" />
+				<small class="form-text text-muted">Only @(string.Join("  ", FileSettings.AllowedExtensions.Split(','))) files are allowed with max size @(FileSettings.MaxFileSizeInMB)MB</small>
+				<span asp-validation-for="Cover" class="text-danger d-block"></span>
+			</div>
+			<div>
+				<label asp-for="Description" class="form-label mt-4"></label>
+				<textarea asp-for="Description" placeholder="Description....." class="form-control"></textarea>
+				<span asp-validation-for="Description" class="text-danger"></span>
+			</div>
+			<input type="submit" class="btn btn-primary rounded-4 mt-3" value="Save">
+		</div>
+		<div class="col-md-6 d-flex justify-content-center">
+			<img class="Cover-Show  w-75  mt-4 rounded-4 overflow-hidden" src="@($"{FileSettings.ImagesPath}/{Model.CurrentCover}")" alt="@Model.Name" />
+		</div>
+	</div>
+</form>
+
+@section Scripts {
+	<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+	<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+	<script src="~/lib/jquery-validation/dist/additional-methods.min.js"></script>
+	<script src="~/js/FileSize-Validator.js" asp-append-version="true"></script>
+	<script src="~/js/Game-Cover.js" asp-append-version="true"></script>
+}
